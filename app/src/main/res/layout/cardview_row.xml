@@ -19,7 +19,7 @@
                 android:layout_height="match_parent"
                 android:padding="5dp">
                 <TextView
-                    android:id="@+id/selected_unit_title"
+                    android:id="@+id/title"
                     style="@style/TextAppearance.AppCompat.Body1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -30,10 +30,10 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/selected_unit_title"
+                    android:layout_below="@+id/title"
                     android:gravity="center">
                 <TextView
-                    android:id="@+id/selected_ques_count"
+                    android:id="@+id/seekbar_count"
                     style="@style/TextAppearance.AppCompat.Body1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/selected_ques_count"/>
+                    android:layout_toRightOf="@+id/seekbar_count"/>
             </RelativeLayout>
             </RelativeLayout>
         </LinearLayout>

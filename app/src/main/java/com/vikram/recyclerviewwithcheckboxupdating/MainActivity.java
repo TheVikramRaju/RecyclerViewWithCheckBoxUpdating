@@ -69,34 +69,31 @@ public class MainActivity extends AppCompatActivity{
                 for (int i = 0; i < stList.size(); i++) {
                     Units singleUnits = stList.get(i);
                     if (singleUnits.isSelected() == true) {
-                        data = data + "\n" + singleUnits.getNoOfquestions();
+                        data = data + "\n" + singleUnits.getStrUnitName()+ " , " + singleUnits.getNoOfquestions();
                     }
                 }
 
                 Toast.makeText(MainActivity.this,
-                        "Selected Units Question: \n" + data , Toast.LENGTH_LONG)
-                        .show();
+                        "Selected Units with ranges: \n" +data , Toast.LENGTH_LONG).show();
             }
         });
 
     }
 
-
+    /*Adapter for the RecycleView*/
 
     public class CardViewDataAdapter extends RecyclerView.Adapter<CardViewDataAdapter.ViewHolder> {
         private List<Units> stList;
 
-        public CardViewDataAdapter(List<Units> unitses) {
-            this.stList = unitses;
+        public CardViewDataAdapter(List<Units> units) {
+            this.stList = units;
         }
 
         // Create new views
         @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent,
-                                             int viewType) {
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             // create a new view
-            View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(
-                    R.layout.cardview_row, null);
+            View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_row, null);
 
             // create ViewHolder
             ViewHolder viewHolder = new ViewHolder(itemLayoutView);
@@ -149,7 +146,6 @@ public class MainActivity extends AppCompatActivity{
                         }
                     }
                     notifyDataSetChanged();
-
                 }
             });
 
@@ -165,14 +161,11 @@ public class MainActivity extends AppCompatActivity{
 
                 }
 
-                public void onProgressChanged(SeekBar bar,
-                                              int paramInt, boolean paramBoolean) {
+                public void onProgressChanged(SeekBar bar, int paramInt, boolean paramBoolean) {
                     //update textview while dragging seekbar
                     viewHolder.tvValues.setText("" + paramInt); // here in textView the percent will be shown
-
                 }
             });
-
         }
         // Return the size arraylist
         @Override
@@ -188,21 +181,16 @@ public class MainActivity extends AppCompatActivity{
 
             public ViewHolder(View itemLayoutView) {
                 super(itemLayoutView);
-                tvName = (TextView) itemLayoutView.findViewById(R.id.selected_unit_title);
-                tvValues = (TextView) itemLayoutView.findViewById(R.id.selected_ques_count);
-                chkSelected = (CheckBox) itemLayoutView
-                        .findViewById(R.id.chk_item);
+                tvName = (TextView) itemLayoutView.findViewById(R.id.title);
+                tvValues = (TextView) itemLayoutView.findViewById(R.id.seekbar_count);
+                chkSelected = (CheckBox) itemLayoutView.findViewById(R.id.chk_item);
                 seekBar = (SeekBar) itemLayoutView.findViewById(R.id.range);
                 seekBar.setMax(Max);
-
             }
         }
         // method to access in activity after updating selection
         public List<Units> getSelectedUnitsist() {
             return stList;
         }
-
     }
-
-
 }
